@@ -1,26 +1,30 @@
 varying vec2 vUv;
 
+float random(vec2 st)
+{
+    return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+}
 
 void main()
 {
     // Pattern 3
-    // float strenght = vUv.x;
+    // float strength = vUv.x;
 
     // Pattern 4
     // float strength = vUv.y;
 
     // Pattern 5
-    // float strenght = 1.0 - vUv.y;
+    // float strength = 1.0 - vUv.y;
 
     // Pattern 6
-    // float strenght = vUv.y * 10.0;
+    // float strength = vUv.y * 10.0;
 
     // Pattern 7
-    // float strenght = mod(vUv.y * 10.0, 1.0);
+    // float strength = mod(vUv.y * 10.0, 1.0);
 
     // Pattern 8
-    // float strenght = mod(vUv.y * 10.0, 1.0);
-    // strenght = step(0.5, strenght);
+    // float strength = mod(vUv.y * 10.0, 1.0);
+    // strength = step(0.5, strength);
 
 
     // Pattern 9
@@ -78,9 +82,29 @@ void main()
     // float strength = floor(vUv.x * 10.0) / 10.0;
 
     // Pattern 22
-    float strength = floor(vUv.x * 10.0) / 10.0;
-    strength *= floor(vUv.y * 10.0) / 10.0;
+    // float strength = floor(vUv.x * 10.0) / 10.0;
+    // strength *= floor(vUv.y * 10.0) / 10.0;
 
+    // Pattern 23
+    // float strength = random(vUv);
+
+
+    // Pattern 24
+    // vec2 gridUv  = vec2(
+    //     floor(vUv.x * 10.0) / 10.0,
+    //     floor(vUv.y * 10.0) / 10.0
+    // );
+
+    // float strength = random(gridUv);
+
+
+    // Pattern 25
+        vec2 gridUv  = vec2(
+        floor(vUv.x * 10.0) / 10.0,
+        floor((vUv.y + vUv.x * 0.5) * 10.0 ) / 10.0
+    );
+
+    float strength = random(gridUv);
 
     gl_FragColor = vec4(vec3(strength), 1.0);
 }
