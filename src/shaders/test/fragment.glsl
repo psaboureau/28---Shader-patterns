@@ -163,12 +163,11 @@ void main()
 
     // float strength = lightX * lightY;
 
-    // Pattern 33
-    float strength = distance(vUv, vec2(0.5));
+    // Pattern 34
+    float strength = step(0.01 , abs(distance(vUv, vec2(0.5)) - 0.25));
 
 
-
-    gl_FragColor = step(0.25, vec4(vec3(strength), 1.0));
+    gl_FragColor = vec4(vec3(strength), 1.0);
 
 
 
