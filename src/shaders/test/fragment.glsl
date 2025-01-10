@@ -1,5 +1,7 @@
 varying vec2 vUv;
 
+#define PI 3.1415926535897932384626433832795
+
 float random(vec2 st)
 {
     return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
@@ -150,24 +152,27 @@ void main()
     // gl_FragColor = vec4(vec3(strength), 1.0);
 
     // Pattern 32
-   float pi = 3.1415926535897932384626433832795;
-    vec2 rotatedUv = rotate(vUv, pi, vec2(0.5));
+    // vec2 rotatedUv = rotate(vUv, PI * 0.25, vec2(0.5));
 
-    vec2 lightUvX = vec2(rotatedUv.x * 0.1 + 0.45, rotatedUv.y * 0.5 + 0.25 );
-    float lightX = 0.015 / distance(lightUvX, vec2(0.5));
-
-
-    vec2 lightUvY = vec2(rotatedUv.y * 0.1 + 0.45, rotatedUv.x * 0.5 + 0.25 );
-    float lightY = 0.015 / distance(lightUvY, vec2(0.5));
-
-    float strength = lightX * lightY;
+    // vec2 lightUvX = vec2(rotatedUv.x * 0.1 + 0.45, rotatedUv.y * 0.5 + 0.25 );
+    // float lightX = 0.015 / distance(lightUvX, vec2(0.5));
 
 
-    gl_FragColor = vec4(vec3(strength), 1.0);
+    // vec2 lightUvY = vec2(rotatedUv.y * 0.1 + 0.45, rotatedUv.x * 0.5 + 0.25 );
+    // float lightY = 0.015 / distance(lightUvY, vec2(0.5));
+
+    // float strength = lightX * lightY;
+
+    // Pattern 33
+    float strength = distance(vUv, vec2(0.5));
+
+
+
+    gl_FragColor = step(0.25, vec4(vec3(strength), 1.0));
 
 
 
     float x = vUv.x;
     
-    
+
 }
