@@ -201,10 +201,26 @@ void main()
     // float strength = angle;
 
     // Patter 42
+    // float angle = atan(vUv.x - 0.5, vUv.y - 0.5);
+    // angle /= PI * 2.0;
+    // angle += 0.5;
+    // float strength = angle;
+
+
+    // Patter 43
+    // float angle = atan(vUv.x - 0.5, vUv.y - 0.5);
+    // angle /= PI * 2.0;
+    // angle += 0.5;
+    // angle *= 20.0;
+    // angle = mod(angle, 1.0);
+    // float strength = angle;
+    
+
+    // Pattern 44
     float angle = atan(vUv.x - 0.5, vUv.y - 0.5);
     angle /= PI * 2.0;
     angle += 0.5;
-    float strength = angle;
+    float strength = sin(angle * 200.0);
 
 
     gl_FragColor = vec4(vec3(strength), 1.0);
