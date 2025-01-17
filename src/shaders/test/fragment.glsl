@@ -1,4 +1,5 @@
 varying vec2 vUv;
+uniform float uTime;
 
 #define PI 3.1415926535897932384626433832795
 
@@ -281,8 +282,16 @@ void main()
     // float strength = cnoise(vUv * 10.0);
 
     // Pattern 47
+    // float strength = step(0.0, cnoise(vUv * 10.0));
 
+    // Pattern 48
+    // float strength = 1.0 - abs(cnoise(vUv * 10.0));
 
+    // Pattern 49
+    // float strength = sin(cnoise(vUv * 10.0) * 20.0);
+
+    // Pattern 50
+    float strength = sin(cnoise(vUv * 10.0) * uTime * 5.0);
 
     gl_FragColor = vec4(vec3(strength), 1.0);
 

@@ -28,7 +28,10 @@ const material = new THREE.ShaderMaterial({
     vertexShader: testVertexShader,
     fragmentShader: testFragmentShader,
     side: THREE.DoubleSide,
-    transparent: true
+    transparent: true,
+    uniforms: {
+        uTime: { value: 0 }
+    }
 })
 
 // Mesh
@@ -79,11 +82,23 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
+
+const clock = new THREE.Clock();
+
+
 /**
  * Animate
  */
 const tick = () =>
 {
+    // Elapsed Time
+    const elapsedTime = clock.getElapsedTime();
+
+
+    // Update uTime
+    material.uniforms.uTime.value = elapsedTime;
+
+
     // Update controls
     controls.update()
 
